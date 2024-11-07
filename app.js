@@ -358,3 +358,26 @@ function sendEmail() {
     console.log("Wysyłanie Email...");
     // Możesz dodać tu kod do wysłania emaila, np. przy pomocy API poczty.
 }
+// Obsługa długiego przytrzymania dla urządzeń mobilnych
+document.querySelectorAll('.time-slot, .delivery-block').forEach((element) => {
+    let pressTimer;
+
+    element.addEventListener('touchstart', (e) => {
+        pressTimer = setTimeout(() => {
+            // Symulacja prawego przycisku po długim przytrzymaniu
+            const contextMenu = document.getElementById("context-menu");
+            contextMenu.style.top = `${e.touches[0].pageY}px`;
+            contextMenu.style.left = `${e.touches[0].pageX}px`;
+            contextMenu.style.display = "block";
+            contextMenu.targetSlot = e.target.closest(".time-slot") || e.target;
+        }, 500); // 500 ms dla długiego przytrzymania
+    });
+
+    element.addEventListener('touchend', () => {
+        clearTimeout(pressTimer);
+    });
+
+    element.addEventListener('touchmove', () => {
+        clearTimeout(pressTimer); // Anuluj długie przytrzymanie, jeśli palec przesunął się
+    });
+});
