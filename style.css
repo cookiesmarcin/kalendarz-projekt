@@ -188,3 +188,31 @@ body {
     transform: translateY(1px); /* Efekt wciśnięcia */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Dostosowanie stylów dla ekranów mniejszych niż 600px */
+@media (max-width: 600px) {
+    #calendar-view {
+        /* Zmniejsz liczbę kolumn w siatce, aby lepiej pasowało na mniejszych ekranach */
+        grid-template-columns: 40px 50px repeat(7, 1fr);
+        font-size: 10px; /* Mniejsza czcionka dla slotów czasowych */
+    }
+
+    .day-header {
+        font-size: 10px; /* Mniejszy tekst dla nagłówków dni */
+        padding: 2px; /* Mniejsze odstępy */
+    }
+
+    .time-slot, .shift-cell {
+        font-size: 8px; /* Mniejsza czcionka w slotach czasowych i komórkach zmian */
+        height: 5px; /* Zmniejszenie wysokości slotów czasowych */
+    }
+
+    #slide-out-section {
+        width: 75%; /* Zmniejszenie szerokości wysuwanego menu na telefonie */
+        font-size: 12px; /* Dostosowanie rozmiaru czcionki */
+        padding: 10px; /* Dostosowanie odstępów */
+    }
+}
+#calendar-view {
+    overflow-x: auto;
+}

@@ -393,3 +393,15 @@ document.querySelectorAll('.time-slot, .delivery-block').forEach((element) => {
         contextMenu.targetSlot = e.target.closest(".time-slot") || e.target;
     });
 });
+
+function adjustCalendarLayout() {
+    const calendarView = document.getElementById("calendar-view");
+    if (window.innerWidth < 600) {
+        calendarView.style.gridTemplateColumns = "40px 50px repeat(7, minmax(80px, 1fr))";
+    } else {
+        calendarView.style.gridTemplateColumns = "50px 60px repeat(7, 1fr)";
+    }
+}
+
+window.addEventListener("resize", adjustCalendarLayout);
+adjustCalendarLayout(); // Wywołanie początkowe, aby ustawić układ przy ładowaniu strony
