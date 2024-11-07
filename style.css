@@ -1,0 +1,190 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+}
+
+#calendar {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+
+#calendar-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#calendar-view {
+    display: grid;
+    grid-template-columns: 50px 60px repeat(7, 1fr); /* Kolumny: zmiana, godziny, 7 dni tygodnia */
+}
+
+.day-header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.shift-cell {
+    font-size: 10px;
+    background-color: #f4f4f9;
+    text-align: center;
+}
+
+/* Kolumna godzin - mniejsza czcionka dla niepełnych godzin */
+.time-column {
+    text-align: right;
+    padding-right: 5px;
+    font-size: 6px; /* Mniejszy rozmiar czcionki dla niepełnych godzin */
+}
+
+/* Większy rozmiar czcionki i pogrubienie dla pełnych godzin */
+.time-column.full-hour {
+    font-size: 10px;
+    font-weight: bold;
+    color: black;
+    border-right: 1px solid #ccc;
+}
+
+/* Sloty czasowe */
+.time-slot {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px; /* Standardowy rozmiar czcionki dla slotów */
+}
+
+/* Gruba górna linia dla pełnych godzin w slotach kalendarza */
+.time-slot.full-hour {
+    border-top: 2px solid #333; /* Grubsza górna linia dla pełnych godzin */
+}
+
+/* Kolorowanie według zmian */
+.shift-1 {
+    background-color: #cce5ff; /* Pastelowy niebieski dla pierwszej zmiany */
+}
+
+.shift-2 {
+    background-color: #e0e0e0; /* Pastelowy szary dla drugiej zmiany */
+}
+
+.shift-3 {
+    background-color: #e5ccbb; /* Pastelowy brązowy dla trzeciej zmiany */
+}
+
+/* Styl dla menu kontekstowego */
+.context-menu {
+    position: absolute;
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 200px; /* Ustaw szerokość */
+}
+
+.context-menu button {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.context-menu button:hover {
+    background-color: #0056b3;
+}
+
+/* Styl dla podświetlonego slotu */
+.time-slot.highlighted {
+    outline: 2px solid #007bff;
+    background-color: #0056b3;
+}
+
+/* Styl dla tekstu wewnątrz bloku dostawy */
+.delivery-block-text {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+}
+
+.delivery-block {
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap; /* Zmiana na 'nowrap', aby tekst nie zawijał się */
+    border-radius: 4px;
+    font-size: 9px; /* Zmniejszenie czcionki */
+    max-width: 100%;
+}
+#slide-out-section {
+    position: fixed;
+    right: -300px; /* Początkowa pozycja poza ekranem */
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #f4f4f9;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease; /* Płynne wysuwanie */
+    padding: 20px;
+}
+
+#slide-out-section h3 {
+    margin-top: 0;
+}
+
+#slide-out-section.open {
+    right: 0; /* Przesunięcie do widoku */
+}
+
+/* Stylizacja dla przycisków w sekcji wysuwanej */
+#slide-out-section button {
+    background-color: #007bff; /* Kolor przycisku */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px; /* Zaokrąglone rogi */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animacje przejścia */
+    margin: 10px 0; /* Odstęp między przyciskami */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień */
+}
+
+#slide-out-section button:hover {
+    background-color: #0056b3; /* Kolor przycisku przy najechaniu */
+    transform: translateY(-2px); /* Efekt podniesienia */
+}
+
+#slide-out-section button:active {
+    transform: translateY(1px); /* Efekt wciśnięcia */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

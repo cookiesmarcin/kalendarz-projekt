@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Dostaw - Widok Tygodniowy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="calendar">
+        <h1>Plan Dostaw - Widok Tygodniowy</h1>
+        <div id="calendar-header">
+            <span>Numer tygodnia: 44</span>
+        </div>
+        <div id="calendar-view"></div>
+    </div>
+    <div id="context-menu" class="context-menu">
+        <button onclick="addDeliveryBlock()">DODAJ TRANSPORT</button>
+        <button onclick="editDeliveryBlock()">EDYTUJ TRANSPORT</button>
+        <button onclick="removeDeliveryBlock()">USUŃ TRANSPORT</button>
+    </div>
+    <div id="slide-out-section">
+        <h3>Szczegóły Transportu</h3>
+        <p><strong>Data:</strong> <span id="transport-date">28.10.2024</span></p>
+        <p><strong>Godzina:</strong> <span id="transport-time">08:00</span></p>
+        <p><strong>Nazwa:</strong> <span id="transport-name">AXALTA COATING SYSTEMS</span></p>
+        <p><strong>Dzień tygodnia:</strong> <span id="transport-day">Poniedziałek</span></p>
+        <p><strong>Status:</strong> <span id="transport-status">Dostarczono</span></p>
+        <p><strong>Numer:</strong> <span id="transport-number">12345</span></p>
+
+            <!-- Dodane przyciski -->
+        <button onclick="sendSMS()">Wyślij SMS</button>
+        <button onclick="sendEmail()">Wyślij Email</button>
+    </div>    
+    <script src="app.js"></script>
+</body>
+</html>
