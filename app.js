@@ -381,3 +381,15 @@ document.querySelectorAll('.time-slot, .delivery-block').forEach((element) => {
         clearTimeout(pressTimer); // Anuluj długie przytrzymanie, jeśli palec przesunął się
     });
 });
+// Obsługa podwójnego kliknięcia jako alternatywa dla menu kontekstowego
+document.querySelectorAll('.time-slot, .delivery-block').forEach((element) => {
+    element.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        // Symulacja prawego przycisku przy podwójnym kliknięciu
+        const contextMenu = document.getElementById("context-menu");
+        contextMenu.style.top = `${e.pageY}px`;
+        contextMenu.style.left = `${e.pageX}px`;
+        contextMenu.style.display = "block";
+        contextMenu.targetSlot = e.target.closest(".time-slot") || e.target;
+    });
+});
