@@ -358,17 +358,3 @@ function sendEmail() {
     console.log("Wysyłanie Email...");
     // Możesz dodać tu kod do wysłania emaila, np. przy pomocy API poczty.
 }
-document.querySelectorAll(".time-slot, .delivery-block").forEach(slot => {
-    // Reakcja na długie przytrzymanie jako prawy przycisk myszy
-    slot.addEventListener("touchstart", function(e) {
-        touchTimer = setTimeout(() => {
-            // Wywołanie funkcji menu kontekstowego lub podobnej akcji
-            e.preventDefault();
-            showContextMenu(e);
-        }, 500); // 500 ms jako próg długiego przytrzymania
-    });
-
-    // Anulowanie przytrzymania, jeśli dotknięcie jest krótkie lub użytkownik przesunie palcem
-    slot.addEventListener("touchend", () => clearTimeout(touchTimer));
-    slot.addEventListener("touchmove", () => clearTimeout(touchTimer));
-});
